@@ -102,7 +102,7 @@ public class VarastoTest {
     public void merkkijonoksi() {
         // test
         merkkijono = varasto.toString();
-        assertEquals("saldo = 0.0, vielä tilaa 10.0", merkkijono);
+        assertEquals("saldo = 0.0, vielä tilaa 10.", merkkijono); // p.o. 10.0
     }
 
 }
