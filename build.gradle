@@ -8,7 +8,6 @@
 
 plugins {
     id 'com.github.kt3k.coveralls' version '2.8.1'
-    xml.enabled = true
 }
 
 // Apply the java plugin to add support for Java
@@ -42,5 +41,6 @@ jar {
 }
 
 apply plugin: "jacoco"
+xml.enabled = true
 
 
