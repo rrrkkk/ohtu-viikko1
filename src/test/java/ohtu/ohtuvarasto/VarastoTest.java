@@ -12,12 +12,17 @@ import static org.junit.Assert.*;
 
 public class VarastoTest {
 
-    Varasto varasto;
+    Varasto varasto, varasto_minus, varasto_minus_minus, varasto2, varasto3;
+    String merkkijono;
     double vertailuTarkkuus = 0.0001;
 
     @Before
     public void setUp() {
+        varasto_minus = new Varasto(-10);
+        varasto_minus_minus = new Varasto(-10, -10);
         varasto = new Varasto(10);
+        varasto2 = new Varasto(10, 2);
+        varasto3 = new Varasto(10, 12);
     }
 
     @Test
@@ -77,6 +82,26 @@ public class VarastoTest {
         varasto.otaVarastosta(14);
         // varastoon pitäisi jäädä saldoksi 0
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void otetaanNegatiivinen() {
+        varasto.otaVarastosta(-1);
+        // varastoon pitäisi jäädä saldoksi 0
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void laitetaanNegatiivinen() {
+        varasto.lisaaVarastoon(-1);
+        // varastoon pitäisi jäädä saldoksi 0
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+    
+    @Test
+    public void merkkijonoksi() {
+        merkkijono = varasto.toString();
+        assertEquals("saldo = 0.0, vielä tilaa 10.0", merkkijono);
     }
 
 }
